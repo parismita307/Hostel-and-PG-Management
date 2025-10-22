@@ -1,0 +1,90 @@
+#include <iostream>
+#include <string>
+#include <limits>
+using namespace std;
+
+void displayHostelOptions() {
+    cout << "\nAvailable Hostels (with ratings):\n";
+    cout << "1. Sunshine Hostel (4.2/5)\n";
+    cout << "2. GreenStay Hostel (4.0/5)\n";
+}
+
+void displayPGOptions() {
+    cout << "\nAvailable PGs (with ratings):\n";
+    cout << "1. Nest PG (4.5/5)\n";
+    cout << "2. Comfort PG (4.1/5)\n";
+}
+
+int getRoomCost(int choice, int duration, bool isHostel) {
+    int cost = 0;
+    if (isHostel) {
+        cout << "\nRoom Types with Rates:\n";
+        cout << "1. Single Room - Rs 6000/month\n";
+        cout << "2. Double Sharing - Rs 4000/month\n";
+        cout << "3. Triple Sharing - Rs 3000/month\n";
+        int roomType;
+        cout << "Choose Room Type: ";
+        cin >> roomType;
+        switch (roomType) {
+            case 1: cost = 6000; break;
+            case 2: cost = 4000; break;
+            case 3: cost = 3000; break;
+            default: cout << "Invalid choice! Defaulting to Rs 4000/month.\n"; cost = 4000;
+        }
+    } else {
+        cout << "\nRoom Types with Rates:\n";
+        cout << "1. AC Room - Rs 8000/month\n";
+        cout << "2. Non-AC Room - Rs 5000/month\n";
+        int roomType;
+        cout << "Choose Room Type: ";
+        cin >> roomType;
+        switch (roomType) {
+            case 1: cost = 8000; break;
+            case 2: cost = 5000; break;
+            default: cout << "Invalid choice! Defaulting to Rs 5000/month.\n"; cost = 5000;
+        }
+    }
+    return cost * duration;
+}
+
+int main() {
+    cout << "Students details" << endl;
+    string name, course, gender, email;
+    long long mobile;
+    int age, duration;
+
+    cout << "Enter Student Name: "; getline(cin, name);
+    cout << "Enter Course: "; getline(cin, course);
+    cout << "Enter Gender: "; getline(cin, gender);
+    cout << "Enter Email ID: "; getline(cin, email);
+    cout << "Enter Mobile Number: "; cin >> mobile;
+    cout << "Enter Age: "; cin >> age;
+    cout << "Enter Duration of Stay (in months): "; cin >> duration;
+
+    int choice;
+    cout << "\nWhere do you want to stay?\n1. Hostel\n2. PG\nEnter choice: ";
+    cin >> choice;
+
+    int total = 0;
+    if (choice == 1) {
+        displayHostelOptions();
+        int hostelChoice;
+        cout << "Select Hostel (1 or 2): "; cin >> hostelChoice;
+        total = getRoomCost(hostelChoice, duration, true);
+    } else if (choice == 2) {
+        displayPGOptions();
+        int pgChoice;
+        cout << "Select PG (1 or 2): "; cin >> pgChoice;
+        total = getRoomCost(pgChoice, duration, false);
+    } else {
+        cout << "Invalid choice! Exiting.\n";
+        return 1;
+    }
+
+    cout << "\n====================================\n";
+    cout << "Booking Confirmed!\n";
+    cout << "Student Name: " << name << endl;
+    cout << "Total Expenditure: Rs " << total << endl;
+    cout << "====================================\n";
+    return 0;
+}
