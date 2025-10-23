@@ -34,3 +34,11 @@ Saves time through automation.
 Improves communication between tenants and management.
 
 Ensures better security and record-keeping.
+
+**Contribitors:**
+
+1. Parismita Barman - ADTU/0/2025-28/BCAM/047
+2. Aryan Singha - ADTU/0/2025-2028/BCAM/005
+3. Neelav Paul - ADTU/0/2025-2028/BCAM/004
+4. Jouti Kalita - ADTU/0/2025-28/BCAM/033
+5. Aaqib uddin - ADTU/0/2025-28/BCAM/006 
